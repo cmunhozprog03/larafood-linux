@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-title">
-            #filtros
+           
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -26,18 +26,12 @@
                         <tr>
                             
                             <td>{{ $plan->name }}</td>
-                            <td>{{ $plan->price }}</td>
+                            <td>{{ number_format($plan->price, 2, ',', '.') }}</td>
                             <td>
-                                <a href="#" class="btn btn-warning btn-sm">VER</a>
+                                <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning btn-sm">VER</a>
                             </td>
                         </tr> 
                         @endforeach
-                        
-                        <tr>
-                            <td scope="row"></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
