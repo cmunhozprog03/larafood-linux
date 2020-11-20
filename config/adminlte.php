@@ -237,10 +237,10 @@ return [
             'topnav' => true,
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
+            'text' => 'Planos',
+            'url'  => 'admin/plans',
+            
+        ], 
         [
             'text'        => 'pages',
             'url'         => 'admin/pages',
