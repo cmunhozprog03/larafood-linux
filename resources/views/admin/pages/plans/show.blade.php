@@ -22,5 +22,12 @@
           <strong>Nome: </strong> {{$plan->name}}
         </li>
       </ul>
+      <div>
+        <form action="{{ route('plans.destroy', $plan->url)}}" method="POST">
+          @csrf
+          @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-lg">DELETAR O PLANO: {{$plan->name}} </button>
+        </form>
+      </div>
     </div>
 @endsection

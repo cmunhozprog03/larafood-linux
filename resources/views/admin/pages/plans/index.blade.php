@@ -9,7 +9,11 @@
 @section('content')
     <div class="card">
         <div class="card-title">
-           
+           <form action="" method="POST" class="form form-inline">
+                @csrf
+                <input type="text" name="filter" placeholder="Buscar..." class="form-control">
+                
+           </form>
         </div>
         <div class="card-body">
             <div class="table-responsive">
