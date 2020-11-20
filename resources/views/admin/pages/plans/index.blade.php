@@ -9,10 +9,11 @@
 @section('content')
     <div class="card">
         <div class="card-title">
-           <form action="" method="POST" class="form form-inline">
+            <form action="{{route('plans.search')}}" method="POST" class="form form-inline">
                 @csrf
                 <input type="text" name="filter" placeholder="Buscar..." class="form-control">
-                
+                <button type="submit" class="btn btn-dark">Buscar</button>
+
            </form>
         </div>
         <div class="card-body">
