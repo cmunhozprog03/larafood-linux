@@ -3,7 +3,7 @@
 @section('title', 'Planos')
 
 @section('content_header')
-    <h1>Planos <a href="{{ route('plans.create') }}" class="btn btn-dark">ADD</a></h1>
+    <h1>Planos &nbsp;&nbsp; <a href="{{ route('plans.create') }}" class="btn btn-dark"><i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp; Novo</a></h1>
 @stop
 
 @section('content')
@@ -11,29 +11,29 @@
         <div class="card-title">
             <form action="{{route('plans.search')}}" method="POST" class="form form-inline">
                 @csrf
-                <input type="text" name="filter" placeholder="Buscar..." class="form-control">
-                <button type="submit" class="btn btn-dark">Buscar</button>
+                <input type="text" name="filter" placeholder="Buscar..." class="form-control" value="{{ $filters['filter'] ?? ''}}">
+                <button type="submit" class="btn btn-dark"> <i class="fas fa-search"></i>&nbsp; Buscar</button>
 
            </form>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover table-condensed">
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
-                            <th>Nome</th>
-                            <th>Preços</th>
-                            <th>Ações</th>
+                            <th class="lead" style="font-weight: 600">Nome</th>
+                            <th class="lead" style="font-weight: 600">Preços</th>
+                            <th class="lead" style="font-weight: 600">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($plans as $plan)
                         <tr>
                             
-                            <td>{{ $plan->name }}</td>
-                            <td>{{ number_format($plan->price, 2, ',', '.') }}</td>
+                            <td class="lead" style="font-weight: 500">{{ $plan->name }}</td>
+                            <td class="lead" style="font-weight: 500">{{ number_format($plan->price, 2, ',', '.') }}</td>
                             <td>
-                                <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning btn-sm">VER</a>
+                                <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-success btn-sm" title="VER"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a>
                             </td>
                         </tr> 
                         @endforeach
@@ -42,7 +42,12 @@
             </div>
         </div>
         <div class="card-footer">
-            {!! $plans->links() !!}
+            @if (isset($filters))
+                {!! $plans->appends($filters)->links() !!}
+            @else
+                {!! $plans->links() !!}
+            @endif
+            
         </div>
     </div>
 @stop

@@ -67,10 +67,13 @@ class PlanController extends Controller
 
     public function search(Request $request)
     {
+        $filters = $request->except('_token');
+
         $plans = $this->repository->search($request->filter);
 
         return view('admin.pages.plans.index', [
-            'plans' => $plans
+            'plans' => $plans,
+            'filters' => $filters
         ]);
     }
 }
